@@ -1,3 +1,7 @@
+#ifndef STOCK_H
+#define STOCK_H
+
+
 #include <string>
 
 class Stock {
@@ -12,7 +16,7 @@ public:
     void setPrice(double price);
 
     //needs to be moved to porfolio class
-    static Stock fromTextLine(const std::string& line);
+    //static Stock fromTextLine(const std::string& line);
 
 private:
     std::string symbol;
@@ -21,3 +25,5 @@ private:
     double price;
 
 };
+
+#endif

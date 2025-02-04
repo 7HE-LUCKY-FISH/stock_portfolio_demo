@@ -24,6 +24,7 @@ double Stock::getPrice() const {
 void Stock::setPrice(double price) {
     this->price = price;
 }
+/*
 //needs to be moved to porfolio class
 static inline std::string trim(const std::string& str) {
     const std::string whitespace = " \t";
@@ -54,3 +55,4 @@ Stock Stock::fromTextLine(const std::string& line) {
     
     return Stock(symbol, name, quantity, price);
 }
+*/

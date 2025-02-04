@@ -1,0 +1,2 @@
+APPL, Apple, 200.00, 10.4
+WMT, Walmart,  85.12, 23
