@@ -1,0 +1,3 @@
+APPL,Apple,200.00,10.40
+WMT,Walmart,85.12,23.00
+NVDA,Nvidia,125.00,10.00

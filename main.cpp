@@ -12,6 +12,11 @@ int main() {
         User user("john_doeeee", "password123", "john@example.com");
         Portfolio& portfolio1 = user.createPortfolio();
         portfolio1.loadFromFile("test.txt");
+        //create new stock and add it to portfolio
+        Stock s1("NVDA", "Nvidia",10,125);
+        portfolio1.addStock(s1);
+        //write portfolio to output file
+        portfolio1.saveToFile("output.txt");
         // View user's portfolios
         std::cout << "User: " << user.getUsername() << "\n";
         user.viewPortfolios();

@@ -3,6 +3,7 @@
 #include <sstream>
 #include <algorithm>
 #include <stdexcept>
+#include <iomanip>
 
 static inline std::string trim(const std::string& str) {
     const std::string whitespace = " \t";
@@ -49,5 +50,18 @@ bool Portfolio::loadFromFile(const std::string& filename) {
         Stock stock(symbol, name, quantity, price);
         addStock(stock);
     }
+    return true;
+}
+bool Portfolio:: saveToFile(const std::string& filename)const{
+    std::ofstream file(filename);
+    if (!file.is_open()){
+        throw std:: invalid_argument("Could not open file" +filename);
+    }
+    for (const Stock& stock: stocks){
+        file<< stock.getSymbol()<<","<<stock.getName()<<","
+        <<std::fixed<<std::setprecision(2)<<stock.getPrice()
+        <<","<<stock.getQuantity()<<std::endl;
+    }
+    file.close();
     return true;
 }
