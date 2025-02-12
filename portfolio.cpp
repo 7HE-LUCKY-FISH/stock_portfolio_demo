@@ -20,7 +20,6 @@ Portfolio::~Portfolio() {
     delete [] stocks;
 }
 
-
 Portfolio::Portfolio(const Portfolio& other)
     : stockCount(other.stockCount), capacity(other.capacity) {
     stocks = new Stock[capacity];
@@ -52,15 +51,12 @@ void Portfolio::resize() {
     stocks = newStocks;
 }
 
-
 void Portfolio::addStock(const Stock& stock) {
     if (stockCount == capacity) {
         resize();
     }
     stocks[stockCount++] = stock;
 }
-
-
 
 bool Portfolio::loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
@@ -94,6 +90,7 @@ bool Portfolio::loadFromFile(const std::string& filename) {
     }
     return true;
 }
+
 bool Portfolio:: saveToFile(const std::string& filename)const{
     std::ofstream file(filename);
     if (!file.is_open()){
@@ -109,11 +106,26 @@ bool Portfolio:: saveToFile(const std::string& filename)const{
     return true;
 }
 
-
 const Stock* Portfolio::getStocks() const {
     return stocks;
 }
 
 int Portfolio::getStockCount() const {
     return stockCount;
+}
+
+void Portfolio::selectionSort() {
+    for (int i = 0; i < stockCount - 1; ++i) {
+        int minIndex = i;
+        for (int j = i + 1; j < stockCount; ++j) {
+            if (stocks[j] < stocks[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            Stock temp = stocks[i];
+            stocks[i] = stocks[minIndex];
+            stocks[minIndex] = temp;
+        }
+    }
 }

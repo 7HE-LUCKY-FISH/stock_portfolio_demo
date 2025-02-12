@@ -18,12 +18,14 @@ public:
 
     const Stock* getStocks() const;
     int getStockCount() const;
-private:
 
+    void selectionSort();
+    //void insertionSort();
+    //void quickSort();
+private:
     Stock* stocks;
     int stockCount;
     int capacity;
-
     void resize();
 };
 

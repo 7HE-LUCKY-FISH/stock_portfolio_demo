@@ -17,6 +17,8 @@ int main() {
         //create new stock and add it to portfolio
         Stock s1("NVDA", "Nvidia",10,125);
         portfolio1.addStock(s1);
+
+        portfolio1.selectionSort();
         //write portfolio to output file
         portfolio1.saveToFile("output.txt");
         // View user's portfolios

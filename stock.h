@@ -13,18 +13,14 @@ public:
     std::string getName() const;
     double getQuantity() const;
     double getPrice() const;
-
     void setPrice(double price);
-
-    //needs to be moved to porfolio class
-    //static Stock fromTextLine(const std::string& line);
+    bool operator<(const Stock& other) const;
 
 private:
     std::string symbol;
     std::string name;
     double quantity;
     double price;
-
 };
 
 #endif

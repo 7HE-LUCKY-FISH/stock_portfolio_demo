@@ -26,3 +26,7 @@ double Stock::getPrice() const {
 void Stock::setPrice(double price) {
     this->price = price;
 }
+
+bool Stock::operator<(const Stock& other) const {
+    return price < other.price;
+}
