@@ -20,8 +20,11 @@ public:
     int getStockCount() const;
 
     void selectionSort();
-    //void insertionSort();
-    //void quickSort();
+    void insertionSort();
+    void quickSort();
+    void quickSort(int low, int high);
+    int partition(int low, int high);
+    void swap(int i, int j);
 private:
     Stock* stocks;
     int stockCount;

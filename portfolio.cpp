@@ -129,3 +129,47 @@ void Portfolio::selectionSort() {
         }
     }
 }
+
+void Portfolio::insertionSort(){
+    for (int i = 1; i < stockCount; ++i) {
+        Stock key = stocks[i];
+        int j = i - 1;
+        while (j >= 0 && key.getName()<stocks[j].getName()) {
+            stocks[j + 1] = stocks[j];
+            j = j - 1;
+        }
+        stocks[j + 1] = key;
+    }
+}
+
+void Portfolio::quickSort() {
+    if (stockCount <= 1) return;
+    quickSort(0, stockCount - 1);
+}
+
+void Portfolio::quickSort(int low, int high) {
+    if (low < high) {
+        int pi = partition(low, high);
+        quickSort(low, pi - 1);
+        quickSort(pi + 1, high);
+    }
+}
+
+int Portfolio::partition(int low, int high) {
+    Stock pivot = stocks[high];
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; ++j) {
+        if (stocks[j].getQuantity() < pivot.getQuantity()) {
+            ++i;
+            swap(i, j);
+        }
+    }
+    swap(i + 1, high);
+    return (i + 1);
+}
+
+void Portfolio::swap(int i, int j) {
+    Stock temp = stocks[i];
+    stocks[i] = stocks[j];
+    stocks[j] = temp;
+}

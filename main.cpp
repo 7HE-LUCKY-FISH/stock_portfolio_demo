@@ -18,8 +18,10 @@ int main() {
         Stock s1("NVDA", "Nvidia",10,125);
         portfolio1.addStock(s1);
 
-        portfolio1.selectionSort();
-        //write portfolio to output file
+        //portfolio1.selectionSort();
+        //portfolio1.insertionSort();
+        portfolio1.quickSort();
+        //write portfolio to output file 
         portfolio1.saveToFile("output.txt");
         // View user's portfolios
         std::cout << "User: " << user.getUsername() << "\n";
