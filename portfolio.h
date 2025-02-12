@@ -7,12 +7,24 @@
 
 class Portfolio {
 public:
+    Portfolio();
+    ~Portfolio();
+    Portfolio(const Portfolio& other);
+    Portfolio& operator=(const Portfolio& other);
+
     void addStock(const Stock& stock);
     bool loadFromFile(const std::string& filename);
     bool saveToFile(const std:: string& filename) const;
-    const std::vector<Stock>& getStocks() const;
+
+    const Stock* getStocks() const;
+    int getStockCount() const;
 private:
-    std::vector<Stock> stocks;
+
+    Stock* stocks;
+    int stockCount;
+    int capacity;
+
+    void resize();
 };
 
 #endif

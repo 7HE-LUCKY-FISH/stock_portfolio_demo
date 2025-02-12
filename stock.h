@@ -6,6 +6,7 @@
 
 class Stock {
 public:
+    Stock();
     Stock(const std::string& symbol, const std::string& name,  double quantity, double price);
     
     std::string getSymbol() const;

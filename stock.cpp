@@ -2,6 +2,8 @@
 #include <sstream>
 #include <algorithm>
 
+Stock::Stock() : symbol(""), name(""), quantity(0), price(0){}
+
 Stock::Stock(const std::string& symbol, const std::string& name, double quantity, double price)
     : symbol(symbol), name(name), quantity(quantity), price(price) {}
 

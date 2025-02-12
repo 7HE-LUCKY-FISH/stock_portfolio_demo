@@ -41,16 +41,16 @@ void User::viewPortfolios() const {
 
     for (size_t i = 0; i < portfolios.size(); ++i) {
         std::cout << "Portfolio " << i + 1 << ":\n";
-        const auto& stocks = portfolios[i].getStocks();
-        if (stocks.empty()) {
+        int count = portfolios[i].getStockCount();
+        if (count == 0) {
             std::cout << "  No stocks in this portfolio.\n";
         } else {
-            for (const auto& stock : stocks) {
-                // Assumes Stock class has the respective getter methods
-                std::cout << "  Stock Symbol: " << stock.getSymbol()
-                          << ", Name: " << stock.getName()
-                          << ", Price: " << stock.getPrice()
-                          << ", Quantity: " << stock.getQuantity() << "\n";
+            const Stock* stocks = portfolios[i].getStocks();
+            for (int j = 0; j < count; ++j) {
+                std::cout << "  Stock Symbol: " << stocks[j].getSymbol()
+                          << ", Name: " << stocks[j].getName()
+                          << ", Price: " << stocks[j].getPrice()
+                          << ", Quantity: " << stocks[j].getQuantity() << "\n";
             }
         }
         std::cout << "\n";

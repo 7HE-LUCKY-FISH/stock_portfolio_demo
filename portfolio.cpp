@@ -12,13 +12,55 @@ static inline std::string trim(const std::string& str) {
     return (start == std::string::npos) ? "" : str.substr(start, end - start + 1);
 }
 
-void Portfolio::addStock(const Stock& stock) {
-    stocks.push_back(stock);
+Portfolio::Portfolio() : stockCount(0), capacity(10) {
+    stocks = new Stock[capacity];
 }
 
-const std::vector<Stock>& Portfolio::getStocks() const {
-    return stocks;
+Portfolio::~Portfolio() {
+    delete [] stocks;
 }
+
+
+Portfolio::Portfolio(const Portfolio& other)
+    : stockCount(other.stockCount), capacity(other.capacity) {
+    stocks = new Stock[capacity];
+    for (int i = 0; i < stockCount; ++i) {
+        stocks[i] = other.stocks[i];
+    }
+}
+
+Portfolio& Portfolio::operator=(const Portfolio& other) {
+    if (this != &other) {
+        delete [] stocks;
+        stockCount = other.stockCount;
+        capacity = other.capacity;
+        stocks = new Stock[capacity];
+        for (int i = 0; i < stockCount; ++i) {
+            stocks[i] = other.stocks[i];
+        }
+    }
+    return *this;
+}
+
+void Portfolio::resize() {
+    capacity *= 2;
+    Stock* newStocks = new Stock[capacity];
+    for (int i = 0; i < stockCount; ++i) {
+        newStocks[i] = stocks[i];
+    }
+    delete [] stocks;
+    stocks = newStocks;
+}
+
+
+void Portfolio::addStock(const Stock& stock) {
+    if (stockCount == capacity) {
+        resize();
+    }
+    stocks[stockCount++] = stock;
+}
+
+
 
 bool Portfolio::loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
@@ -57,11 +99,21 @@ bool Portfolio:: saveToFile(const std::string& filename)const{
     if (!file.is_open()){
         throw std:: invalid_argument("Could not open file" +filename);
     }
-    for (const Stock& stock: stocks){
-        file<< stock.getSymbol()<<","<<stock.getName()<<","
-        <<std::fixed<<std::setprecision(2)<<stock.getPrice()
-        <<","<<stock.getQuantity()<<std::endl;
+    for (int i = 0; i < stockCount; ++i) {
+        file << stocks[i].getSymbol() << ","
+             << stocks[i].getName() << ","
+             << std::fixed << std::setprecision(2) << stocks[i].getPrice() << ","
+             << stocks[i].getQuantity() << std::endl;
     }
     file.close();
     return true;
+}
+
+
+const Stock* Portfolio::getStocks() const {
+    return stocks;
+}
+
+int Portfolio::getStockCount() const {
+    return stockCount;
 }
