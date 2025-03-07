@@ -1,0 +1,15 @@
+AAPL,Apple,185.25,15.00
+MSFT,Microsoft,415.50,8.00
+TSLA,Tesla,177.30,20.00
+NVDA,NVIDIA,878.35,5.00
+META,Meta Platforms,485.60,7.00
+JPM,JPMorgan Chase,192.75,12.00
+JNJ,Johnson & Johnson,152.15,18.00
+PG,Procter & Gamble,162.80,10.00
+WMT,Walmart,58.35,25.00
+KO,Coca-Cola,61.45,30.00
+AMD,Advanced Micro Devices,152.70,15.00
+IBM,International Business Machines,172.30,8.00
+DIS,Walt Disney,112.90,22.00
+NFLX,Netflix,605.75,3.00
+INTC,Intel Corporation,42.25,40.00

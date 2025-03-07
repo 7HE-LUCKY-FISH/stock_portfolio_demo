@@ -27,7 +27,7 @@ public:
     void swap(int i, int j);
 
     void heapSort();
-    void heapify(Stock arr[], int n, int i);
+    void heapify(int n, int i);
 
 private:
     Stock* stocks;
