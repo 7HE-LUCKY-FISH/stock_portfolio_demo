@@ -25,6 +25,10 @@ public:
     void quickSort(int low, int high);
     int partition(int low, int high);
     void swap(int i, int j);
+
+    void heapSort();
+    void heapify(Stock arr[], int n, int i);
+
 private:
     Stock* stocks;
     int stockCount;

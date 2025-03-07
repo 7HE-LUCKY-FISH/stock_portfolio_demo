@@ -20,7 +20,8 @@ int main() {
 
         //portfolio1.selectionSort();
         //portfolio1.insertionSort();
-        portfolio1.quickSort();
+        //portfolio1.quickSort();
+        portfolio1.heapSort();
         //write portfolio to output file 
         portfolio1.saveToFile("output.txt");
         // View user's portfolios

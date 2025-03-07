@@ -173,3 +173,44 @@ void Portfolio::swap(int i, int j) {
     stocks[i] = stocks[j];
     stocks[j] = temp;
 }
+
+
+
+void Portfolio::heapify(Stock arr[], int n, int i){
+    int largest = i;
+    int left = 2*i + 1;
+    int right = 2*i + 2;
+
+    if(left < n && arr[left].getPrice() > arr[largest].getPrice()){
+        largest = left;
+    }
+    /*
+    if (left < && arr[left].getName() > arr[largest].getName()){
+        largest = left;
+    }
+    */
+
+    if(right < n && arr[right].getPrice() > arr[largest].getPrice()){
+        largest = right;
+    }
+    if(largest != i){
+        swap(i, largest);
+        heapify(arr, n, largest);
+    }
+}
+
+
+void Portfolio::heapSort(){
+    for(int i = stockCount/2 - 1; i >= 0; i--){
+        heapify(stocks, stockCount, i);
+    }
+    //min heap
+    for(int i = stockCount - 1; i >= 0; i--){
+        swap(0, i);
+        heapify(stocks, i, 0);
+    }
+    
+}
+
+
+
