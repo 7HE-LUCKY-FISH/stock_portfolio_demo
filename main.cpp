@@ -27,7 +27,7 @@ int main() {
 
         
         portfolio1->loadFromFile("test.txt");
-        portfolio2->loadFromFile("hashtest.txt");
+        portfolio2->loadFromFile("heaptest.txt");
         //sorts by quantity
         portfolio1->quickSort();
         //sort by price
